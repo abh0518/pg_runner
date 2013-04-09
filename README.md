@@ -23,5 +23,5 @@ Providing connection pool and easy query tools for postgresql
 ## Example Code
 
     connection_pool = PG::RunnerConnectionPool.new( dbhost, port, dbname, username, password )
-    pg_runner = PG::PGRunner( connection_pool )
+    pg_runner = PG::PGRunner.new( connection_pool )
     pg_runner.exec_sql ( "SELECT 1" )
