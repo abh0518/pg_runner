@@ -7,18 +7,23 @@ Providing connection pool and easy query tools for postgresql
 
 - postgres
 
-      gem install postgres
+      # reference site
+      # https://github.com/ged/ruby-pg
+      # https://bitbucket.org/ged/ruby-pg/wiki/Home
+
+      # install gem
+      gem install pg
 
 ## Class 
 
 - PG::BasicConnectionPool
     
-      A database connection pool for postgresql
+      A database connection pool for postgresql. default pool size is 5.
 
 - PG::SingleConnectionPool
 
-      A database connection pool suppoert only one connection for postgresql
-      this is a fake connection pool for transaction function of SqlRunner
+      A database connection pool supporting only one connection for postgresql
+      this is a fake connection pool for the transaction function of SqlRunner
 
 - PG::SqlRunner
 
@@ -29,26 +34,42 @@ Providing connection pool and easy query tools for postgresql
 
 ### create connection pool and runner
 
-    connection_pool = PG::BasicConnectionPool.new( dbhost, port, dbname, username, password )
+    connection_pool = PG::BasicConnectionPool.new( dbhost, port, dbname, username, password, pool_sise(optional) )
     runner = PG::SqlRunner.new( connection_pool )
 
-### basic usage
+### Simple query
 
+    # query
     rs = runner.query( "select 1" )
     rs.each do | row |
       # do something
     end
 
-    rs = runner.query( "update blabla" )
-    # result is PGresult class of pg gem
-    if rs.cmd_tuples < 1
-        # blabla~
+    # query with block
+    rs = runner.query( "select $1" ) do |result|
+      # do something
     end
 
-### transaction
+
+    # query with params
+    rs = runner.query( "select $1" , [1] )
+
+    # query with params & block
+    rs = runner.query( "select $1" , [1] ) do |result|
+      # do something
+    end
+
+### Transaction
 
     runner.transaction do | runner |
         # do some transaction works with runner
         # raise Exception if you want rollback
+    end
+
+### Work through PG::Connection
+
+    # work with PG::Connection
+    runner.connect do | conn | do
+      # bla bla~
     end
 
