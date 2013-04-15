@@ -3,31 +3,30 @@
 ## About pg_runner
 Providing connection pool and easy query tools for postgresql
 
-## Required Gems
+## Required Gems & Linux library
 
-- postgres
+- libpq-dev
+  - libpq is a set of library functions that allow client programs to pass queries to the PostgreSQL backend server and to receive the results of these queries.
+  - official site : http://www.postgresql.org/docs/9.1/static/libpq.html
+  - How to install at Ubuntu : apt-get install libpq-dev
 
-      #reference site
-      #https://github.com/ged/ruby-pg
-      #https://bitbucket.org/ged/ruby-pg/wiki/Home
-
-      #install gem
-      gem install pg
+- postgres(pg)
+  - pg is a ruby gem for postgresql
+  - official site : https://bitbucket.org/ged/ruby-pg/wiki/Home, https://github.com/ged/ruby-pg
+  - Hot to install : gem install pg
 
 ## Class 
 
 - PG::BasicConnectionPool
-    
-      A database connection pool for postgresql. default pool size is 5.
+  - A database connection pool for postgresql
+  - Default pool size is 5
 
 - PG::SingleConnectionPool
-
-      A database connection pool supporting only one connection for postgresql
-      this is a fake connection pool for the transaction function of SqlRunner
+  - A database connection pool supporting only one connection for postgresql
+  - This is a fake connection pool for the transaction function of SqlRunner
 
 - PG::SqlRunner
-
-      A simple sql executer class
+  - A simple sql executer class
     
 
 ## Example Code
