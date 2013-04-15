@@ -7,11 +7,11 @@ Providing connection pool and easy query tools for postgresql
 
 - postgres
 
-      # reference site
-      # https://github.com/ged/ruby-pg
-      # https://bitbucket.org/ged/ruby-pg/wiki/Home
+      #reference site
+      #https://github.com/ged/ruby-pg
+      #https://bitbucket.org/ged/ruby-pg/wiki/Home
 
-      # install gem
+      #install gem
       gem install pg
 
 ## Class 
@@ -46,7 +46,7 @@ Providing connection pool and easy query tools for postgresql
     end
 
     # query with block
-    rs = runner.query( "select $1" ) do |result|
+    rs = runner.query( "select * from blabla where $1 = 1" ) do | result |
       # do something
     end
 
@@ -55,7 +55,7 @@ Providing connection pool and easy query tools for postgresql
     rs = runner.query( "select $1" , [1] )
 
     # query with params & block
-    rs = runner.query( "select $1" , [1] ) do |result|
+    rs = runner.query( "select * from blabla where $1 = 1" , [1] ) do | result |
       # do something
     end
 
