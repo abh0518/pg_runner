@@ -9,7 +9,7 @@
   > libpq is a set of library functions that allow client programs to pass queries to the PostgreSQL backend server and to receive the results of these queries.
   
   - official site 
-    > http://www.postgresql.org/docs/9.1/static/libpq.html
+    - http://www.postgresql.org/docs/9.1/static/libpq.html
   - Installation
     >     # at Ubuntu
     >     $$ apt-get install libpq-dev
@@ -18,8 +18,8 @@
   > A ruby gem for postgresql
   
   - official site
-    > https://bitbucket.org/ged/ruby-pg/wiki/Home
-    > https://github.com/ged/ruby-pg
+    - https://bitbucket.org/ged/ruby-pg/wiki/Home
+    - https://github.com/ged/ruby-pg
   - Installation 
     >     $$ gem install pg
 
